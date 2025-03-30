@@ -25,7 +25,8 @@ Prerequisites:
 	Ensure you have Python and MongoDB installed.
 
 Setup:
-	1.Clone the repository:
+	
+ 	1.Clone the repository:
 		---git clone <repository_url>
 	   	   cd event-management-system
 
