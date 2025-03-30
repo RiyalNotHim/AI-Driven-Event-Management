@@ -1,0 +1,30 @@
+import random
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier
+import pickle
+
+# Sample training data (event_type, num_students) → assigned_task
+training_data = np.array([
+    [1, 5, 0], [1, 10, 1], [1, 20, 2],  
+    [2, 5, 3], [2, 10, 4], [2, 20, 5],  
+    [3, 5, 6], [3, 10, 7], [3, 20, 8],  
+])
+
+tasks = [
+    "Manage Registrations", "Coordinate Volunteers", "Handle Logistics",
+    "Manage Tech Setup", "Design Posters", "Manage Social Media",
+    "Food & Beverages", "Security", "Guest Assistance"
+]
+
+# Train the model
+X_train = training_data[:, :2]  # Features: event_type, num_students
+y_train = training_data[:, 2]   # Target: task index
+
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+
+# Save the trained model
+with open("task_model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+print("✅ AI Model Trained & Saved Successfully!")

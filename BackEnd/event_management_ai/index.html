@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <style href = "styles.css"></style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .data-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
+        }
+        .search-box {
+            margin: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function fetchData(type) {
+            fetch(`http://127.0.0.1:8000/${type}/`)
+                .then(response => response.json())
+                .then(data => {
+                    let output = `<h2>${type.charAt(0).toUpperCase() + type.slice(1)} Data</h2><pre>` + JSON.stringify(data, null, 2) + `</pre>`;
+                    document.getElementById("data-container").innerHTML = output;
+                })
+                .catch(error => {
+                    document.getElementById("data-container").innerHTML = `<p style="color:red;">Error loading ${type} data.</p>`;
+                });
+        }
+
+        function searchStudentTasks() {
+            let studentNameInput = document.getElementById("student-search-input");
+            let studentName = studentNameInput.value.trim();
+            if (studentName === "") {
+                alert("Please enter a student name!");
+                return;
+            }
+            fetch(`http://127.0.0.1:8000/assign-tasks/${studentName}`)
+                .then(response => response.json())
+                .then(data => {
+                    let output = `<h2>Tasks for ${studentName}</h2><pre>` + JSON.stringify(data, null, 2) + `</pre>`;
+                    document.getElementById("data-container").innerHTML = output;
+                    studentNameInput.value = "";  // Clear input field
+                })
+                .catch(error => {
+                    document.getElementById("data-container").innerHTML = `<p style="color:red;">Error loading student tasks.</p>`;
+                });
+        }
+
+        function searchEventMembers() {
+            let eventNameInput = document.getElementById("event-search-input");
+            let eventName = eventNameInput.value.trim();
+            if (eventName === "") {
+                alert("Please enter an event name!");
+                return;
+            }
+            fetch(`http://127.0.0.1:8000/events/${eventName}`)
+                .then(response => response.json())
+                .then(data => {
+                    let output = `<h2>Members for Event: ${eventName}</h2><pre>` + JSON.stringify(data, null, 2) + `</pre>`;
+                    document.getElementById("data-container").innerHTML = output;
+                    eventNameInput.value = "";  // Clear input field
+                })
+                .catch(error => {
+                    document.getElementById("data-container").innerHTML = `<p style="color:red;">Error loading event members.</p>`;
+                });
+        }
+
+        document.getElementById("students-btn").addEventListener("click", () => fetchData("students"));
+        document.getElementById("tasks-btn").addEventListener("click", () => fetchData("tasks"));
+        document.getElementById("events-btn").addEventListener("click", () => fetchData("events"));
+        document.getElementById("search-student-btn").addEventListener("click", searchStudentTasks);
+        document.getElementById("search-event-btn").addEventListener("click", searchEventMembers);
+    });
+</script>
+
+</head>
+<body>
+
+    <h1>Event Management System</h1>
+    <div class="container">
+        <button id="students-btn">Load Students</button>
+        <button id="tasks-btn">Load Tasks</button>
+        <button id="events-btn">Load Events</button>
+
+        <div class="search-box">
+            <input type="text" id="student-search-input" placeholder="Enter Student Name">
+            <button id="search-student-btn">Search Student Tasks</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="event-search-input" placeholder="Enter Event Name">
+            <button id="search-event-btn">Search Event Members</button>
+        </div>
+
+        <div class="data-container" id="data-container"></div>
+    </div>
+
+</body>
+</html>
