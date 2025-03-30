@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Sentiment Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        h2 {
+            color: #ff9800;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            background: #ff9800;
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        #results {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🚀 Instagram Sentiment Analyzer</h2>
+
+    <form id="analyzeForm">
+        <input type="text" id="username" name="username" placeholder="Instagram Username" required>
+        <input type="password" id="password" name="password" placeholder="Instagram Password" required>
+        <input type="text" id="post_url" name="post_url" placeholder="Instagram Post URL" required>
+        <button type="submit">Analyze Comments</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        document.getElementById("analyzeForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form from reloading page
+
+            const formData = new FormData(this);
+
+            document.getElementById("results").innerHTML = "Analyzing comments... Please wait. ⏳";
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/analyze", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById("results").innerHTML = `⚠️ Error: ${data.error}`;
+                } else {
+                    document.getElementById("results").innerHTML = `
+                        <b>Positive Comments:</b> ${data["Sentiment Analysis Results"]["Positive"]} <br>
+                        <b>Neutral Comments:</b> ${data["Sentiment Analysis Results"]["Neutral"]} <br>
+                        <b>Negative Comments:</b> ${data["Sentiment Analysis Results"]["Negative"]}
+                    `;
+                }
+            } catch (error) {
+                document.getElementById("results").innerHTML = "⚠️ Error analyzing comments.";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Feedback System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            width: 40%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: blue;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send Event Feedback Request</h2>
+
+        <label>Event Name:</label>
+        <input type="text" id="event_name" placeholder="Enter event name">
+
+        <label>Recipient Name:</label>
+        <input type="text" id="recipient_name" placeholder="Enter recipient name">
+
+        <label>Event Details:</label>
+        <textarea id="event_details" rows="4" placeholder="Enter event details"></textarea>
+
+        <label>Recipient Emails (comma-separated):</label>
+        <input type="text" id="emails" placeholder="Enter recipient emails">
+
+        <button onclick="sendEmail()">Send Email</button>
+
+        <p id="status"></p>
+    </div>
+
+    <script>
+        function sendEmail() {
+            let eventName = document.getElementById("event_name").value;
+            let recipientName = document.getElementById("recipient_name").value;
+            let eventDetails = document.getElementById("event_details").value;
+            let emails = document.getElementById("emails").value.split(",").map(email => email.trim());
+
+            fetch("http://127.0.0.1:5000/sendmail", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    event_name: eventName,
+                    recipient_name: recipientName,
+                    event_details: eventDetails,
+                    emails: emails
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("status").innerText = data.message ? `✅ ${data.message}` : `❌ ${data.error}`;
+            })
+            .catch(error => {
+                document.getElementById("status").innerText = `❌ Request Failed: ${error}`;
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+/* Set background color to Pantone Mocha Mousse */
+body {
+    background-color: #AD8268;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Chat container */
+.chat-container {
+    width: 60%;
+    max-width: 500px;
+    height: 80vh;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Chat header */
+.chat-header {
+    background: #0078FF;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Chat messages */
+.chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style user messages (right side) */
+.user-message {
+    background-color: #0078FF;
+    color: white;
+    align-self: flex-end;
+    padding: 12px 15px;
+    border-radius: 15px 15px 0 15px;
+    margin: 5px 0;
+    max-width: 70%;
+}
+
+/* Style chatbot messages (left side) */
+.bot-message {
+    background-color: #F1F1F1;
+    color: black;
+    align-self: flex-start;
+    padding: 12px 15px;
+    border-radius: 15px 15px 15px 0;
+    margin: 5px 0;
+    max-width: 70%;
+}
+
+/* Input area container */
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Wrapper to properly align input and button */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Message input field */
+#message-input {
+    width: 100%;
+    padding: 14px;
+    padding-right: 90px; /* Space for button */
+    border: 2px solid #0078FF;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box; /* FIXED right boundary issue */
+}
+
+/* Send button inside input field */
+#send-button {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0078FF;
+    color: white;
+    border: none;
+    padding: 12px 30px; /* More padding for broader button */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px; /* Fully rounded button with equal curves */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#send-button:hover {
+    background: #005FCC;
+}

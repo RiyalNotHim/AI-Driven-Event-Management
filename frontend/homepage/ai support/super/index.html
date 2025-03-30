@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content AI Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff9800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #chatbox {
+            width: 90%;
+            max-width: 500px;
+            height: 400px;
+            border-radius: 10px;
+            padding: 15px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            border: 2px solid #ff9800;
+            display: none;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            width: 90%;
+            max-width: 500px;
+            margin-top: 15px;
+        }
+        input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background: #1e1e1e;
+            color: #fff;
+        }
+        button {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background: #ff9800;
+            color: #000;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        #startChatbot {
+            margin-bottom: 20px;
+            font-size: 18px;
+            padding: 12px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🚀 Content AI Chatbot</h2>
+    <button id="startChatbot" onclick="startBackend()">Start Chatbot</button>
+    <div id="chatbox"></div>
+
+    <div class="input-container" style="display: none;" id="inputArea">
+        <input type="text" id="userInput" placeholder="Ask anything about content creation...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function startBackend() {
+            try {
+                // Check if the server is running
+                const response = await fetch("http://127.0.0.1:8000")
+                    .then(() => {
+                        document.getElementById("chatbox").style.display = "block";
+                        document.getElementById("inputArea").style.display = "flex";
+                        document.getElementById("startChatbot").style.display = "none";
+                    })
+                    .catch(() => alert("Please run the backend server first!"));
+            } catch (error) {
+                console.error("Error starting backend:", error);
+            }
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            if (!userInput.trim()) return;
+
+            const chatbox = document.getElementById("chatbox");
+
+            chatbox.innerHTML += `<p><b>You:</b> ${userInput}</p>`;
+            document.getElementById("userInput").value = "";
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/chat?message=${encodeURIComponent(userInput)}`);
+                const data = await response.json();
+                
+                chatbox.innerHTML += `<p><b>AI:</b> ${data.response}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            } catch (error) {
+                chatbox.innerHTML += `<p style="color: red;"><b>Error:</b> Could not connect to AI.</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Feedback System</title>
+</head>
+<body>
+    <h2>Send Event Feedback Email</h2>
+    <form method="POST">
+        <label>Event Name:</label>
+        <input type="text" name="event_name" required><br><br>
+
+        <label>Recipient Name:</label>
+        <input type="text" name="recipient_name" required><br><br>
+
+        <label>Event Details:</label>
+        <textarea name="event_details" required></textarea><br><br>
+
+        <label>Recipient Emails (comma-separated):</label>
+        <input type="text" name="to_emails" required><br><br>
+
+        <label>Schedule Time (HH:MM) (Optional):</label>
+        <input type="text" name="schedule_time"><br><br>
+
+        <button type="submit">Send Email</button>
+    </form>
+</body>
+</html>

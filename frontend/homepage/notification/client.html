@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Scheduler</title>
+    <link rel="stylesheet" href="stylenoti.css">
+</head>
+<body>
+
+    <div class="popup-container">
+        <div class="popup">
+            <h2>📅 Notification Scheduler</h2>
+
+            <label for="message">Notification Message:</label>
+            <input type="text" id="message" placeholder="Enter your message">
+
+            <label for="date">Start Date:</label>
+            <input type="date" id="date">
+
+            <label for="time">Time:</label>
+            <input type="time" id="time">
+
+            <label for="repeat">Repeat:</label>
+            <select id="repeat">
+                <option value="once">Once</option>
+                <option value="daily">Daily</option>
+            </select>
+
+            <button onclick="scheduleUserNotification()">Set Notification</button>
+
+            <p id="confirmationMessage" class="hidden">✅ Notification Scheduled Successfully!</p>
+        </div>
+    </div>
+
+    <script src="scriptnoti.js"></script>
+
+</body>
+</html>

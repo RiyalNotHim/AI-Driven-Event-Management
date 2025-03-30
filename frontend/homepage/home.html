@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpost" content="with=device-width, initial-scale=1.0">
+        <title>EVENT MANAGEMENT SYSTEM</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+    </head>
+    <body>
+        <a href="#" class="help-button" title="Need Help?" onclick="openHelpPage()">
+            <img src="help-icon.png" alt="Help" class="help-icon">
+        </a>
+        <section class="header">
+            <nav>
+                <a href="home.html"><img src="Aesign1.png"></a>
+                <div class="nav-links" id="navlinks">
+                    <i class="fa-solid fa-xmark" onclick="hidemenu()"></i>
+                    <ul>
+                        <ul>
+                            <li class="dropdown">
+                                <a href="#">PR Marketing</a>
+                                <div class="dropdown-content">
+                                    <a href="post sentiment analysis/senti/index.html">Social Media</a>
+                                    <a href="ai support/super/index.html">AI Support</a>
+                                    <a href="email/PR/templates/index.html">Marketing Strategy</a>
+                                    <a href="feedback form email/happen/templates/index.html">Feedback Form</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <li><a href="">Features</a></li>
+                        <li><a href="">Community</a></li>
+                        <li><a href="http://127.0.0.1:5000">AI Matching</a></li> <!--ai_matching -> app.py!-->
+                        <li><a href="tasks_allocation/index.html" class = "nav-link">Allocation System</a></li>
+                        <li><a href="notification/client.html" class="nav-link">AI Scheduler</a></li>
+
+
+
+                    </ul>
+                </div>
+                <i class="fa-solid fa-bars" onclick="hidemenu1()"></i>
+            </nav>
+
+        <div class ="Text-box">
+            <h1>
+                AI DRIVEN EVENT MANAGEMENT SYSTEM
+            </h1>
+            <p>
+                Smart automation, seamless coordination.
+                Elevate efficiency with Artificial intelligence for Event Management System!
+            </p>
+            <a href="about_us.html" class="visit-btn">Visit us to know More</a>
+        </div>
+
+        <div class="button-container">
+            <a href="login.html">
+                <button class="rounded-btn">SIGN IN</button>
+            </a>
+            <a href="login.html">
+                <button class="rounded-btn">Register</button>
+            </a>
+        </div>
+        </section>
+
+        <section class="Events">
+            <h1>Upcoming</h1>
+            <p>College events bring students together through competitions, cultural fests, seminars, and sports, fostering talent and teamwork. These events create opportunities for learning, networking, and showcasing skills in a dynamic environment.
+            <div class="row">
+
+                <div class="event-col">
+                <a href="#tech-event-section" class="event-link">
+                        <img src="tech_event.jpg" alt="Tech Event">
+                        <h3>Tech Event</h3>
+                        <p>A time-bound coding competition where participants solve real-world problems using technology. Teams collaborate, build innovative solutions, and present their projects.</p>
+                </a>
+                </div>
+                
+                <div class="event-col">
+                    <a href="#tech-event-section1" class="event-link">
+                            <img src="culture_event.webp" alt="Tech Event">
+                            <h3>Culture Event</h3>
+                            <p>A time-bound coding competition where participants solve real-world problems using technology. Teams collaborate, build innovative solutions, and present their projects.</p>
+                    </a>
+                </div>
+                <div class="event-col">
+                        <a href="#tech-event-section2" class="event-link">
+                                <img src="sport1.jpg" alt="Tech Event">
+                                <h3>Sports Tournament Event</h3>
+                                <p>A time-bound coding competition where participants solve real-world problems using technology. Teams collaborate, build innovative solutions, and present their projects.</p>
+                        </a>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="event-col">
+                    <img src="job_fair.png" alt="Tech Event">
+                    <h3>Job Fair & Career Expo</h3>
+                    <p>A networking event connecting students with recruiters, companies, and industry leaders. It includes interviews, resume screenings, and career guidance sessions. AI can match students with recruiters based on skills and automate scheduling.</p>
+                </div>
+                <div class="event-col">
+                    <img src="geust.jpg" alt="Tech Event">
+                    <h3>Seminar & Guest Lecture</h3>
+                    <p>Experts from various fields share insights on trending topics like AI, cybersecurity, and startups. Attendees gain industry knowledge, interact with speakers, and ask questions. AI can handle speaker scheduling, audience engagement, and feedback analysis.</p>
+                </div>
+                <div class="event-col">
+                    <img src="esport.jpg" alt="Tech Event">
+                    <h3>Esports Championship</h3>
+                    <p>A competitive gaming event featuring popular titles like Valorant, CS:GO, and FIFA. Players battle it out in teams or solo for prizes and recognition. AI can manage brackets, track scores, and suggest match strategies based on player stats.</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- <section class="campus">
+            <h1>Our Global Campus</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta facilis recusandae, aliquam quod vero incidunt quibusdam similique odio, provident facere omnis saepe, id ducimus voluptas. Accusantium maiores eaque omnis optio.</p>
+
+            <div class ="row">
+                <div class="campus-col">
+                    <img src="tech_event.jpg" >
+                </div>
+                <div class="campus-col">
+                    <img src="music_event.jpg" >
+                </div>
+                <div class="campus-col">
+                    <img src="culture_event.webp" >
+                </div>
+            </div>
+        </section> -->
+        <!-- Add this at the bottom of your homepage inside <body> -->
+            <div id="tech-event-section" class="event-section">
+                <h1>Tech Event</h1>
+                <div class="top-section">
+                    <div class="text-box">
+                        <p>Grab your reader’s attention with a great quote from the document or use this space to emphasize a key point. To place this text box anywhere on the page, just drag it.</p>
+                        <button class="register-btn" onclick="window.location.href='event_register/eventr.html';">Register Now</button>
+                    </div>
+                    <img src="tech1.jpg" class="image1">
+                </div>
+            
+                <div class="image-container">
+                    <img src="tech2.jpg" class="full-width-image">
+                    <img src="tech3.jpg" class="full-width-image">
+                </div>
+            </div>
+
+<!-- Event Section with Image on Right and Text on Left -->
+<!-- Event Section with Image on Left and Text on Right -->
+<div id="tech-event-section1" class="event-container">
+    <h1>Culture Event</h1>
+    <div class="event-top-section">
+        <img src="cul1.webp" class="event-image">
+        <div class="event-text-box">
+            <p>Engage your audience with an inspiring quote or key information. Use this space to highlight the most important details.</p>
+            <button class="register-btn" onclick="window.location.href='event_register/eventr.html';">Register Now</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="cul2.jpg" class="full-width-image">
+        <img src="tech3.jpg" class="full-width-image">
+    </div>
+</div>
+<div id = "tech-event-section2" class="event-section">
+    <h1>Sports Tournament</h1>
+    <div class="top-section">
+        <div class="text-box">
+            <p>Grab your reader’s attention with a great quote from the document or use this space to emphasize a key point. To place this text box anywhere on the page, just drag it.</p>
+            <button class="register-btn" onclick="window.location.href='event_register/eventr.html';">Register Now</button>
+        </div>
+        <img src="sport1.jpg" class="image1">
+    </div>
+    
+    <div class="image-container">
+        <img src="sports2.jpg" class="full-width-image">
+        <img src="sport3.jpg" class="full-width-image">
+    </div>
+</div>
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-top: -30px;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color:#c62daf ;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {
+        background-color: pink;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+
+
+
+        
+
+        <script>
+
+            
+function openHelpPage() {
+    window.open("http://127.0.0.1:8080", "_blank");
+}
+            document.addEventListener("DOMContentLoaded", function () {
+    const registerBtn = document.querySelector(".register-btn");
+    if (registerBtn) {
+        registerBtn.addEventListener("click", function () {
+            window.location.href = "event_register/eventr.html";
+        });
+    }
+});
+const socket = new WebSocket("ws://localhost:8000/ws");
+
+socket.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    alert(`🔔 Notification: ${data.title}\n${data.body}`);
+};
+document.getElementById("open-notification-ui").addEventListener("click", function () {
+    const popup = window.open("notification/client.html", "NotificationScheduler", "width=400,height=500");
+    if (!popup) {
+        alert("Popup blocked! Please allow popups for this site.");
+    }
+});
+
+
+
+    function navigateToIndex(event) {
+        event.preventDefault(); // Prevent default link behavior
+        window.location.href = "index.html"; // Adjust path if needed
+    }
+            var navlinks  = document.getElementById("navlinks");
+                              
+            function showmenu()
+            {
+                navlinks.style.right="0";
+            }
+            function showmenu1()
+            {
+                navlinks.style.right="-200px";
+            }
+        </script>
+
+    </body>
+</html>
