@@ -7,7 +7,7 @@ students_collection = db["formdatas"]
 tasks_collection = db["tasks"]
 
 # OpenAI API Key (Replace with your key)
-openai.api_key = "AIzaSyA4TIHZ_ezXBTJ8s9VFzWpHH4S8zv5JGlE"
+openai.api_key = ""
 
 class AITaskAllocator:
     def __init__(self):
